@@ -17,12 +17,14 @@ public class MainActivity extends AppCompatActivity {
 
     private ListView lv_clients_list;
     private ArrayAdapter adapter;
-    private String getAllClientsURL = "http://192.168.100.76/agenda_rest/webservices/getAllClients.php";
+    private String getAllClientsURL = "https://ferreteriamago.herokuapp.com/api_clientes?user_hash=12345&action=get";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        StrictMode.setThreadPolicy(new StrictMode.ThreadPolicy.Builder().permitNetwork().build());
+
         lv_clients_list = (ListView)findViewById(R.id.lv_contacts_list);
         adapter = new ArrayAdapter(this, android.R.layout.simple_list_item_1);
         lv_clients_list.setAdapter(adapter);
